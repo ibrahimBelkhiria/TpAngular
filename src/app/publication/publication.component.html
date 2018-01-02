@@ -1,0 +1,24 @@
+
+<div class="panel ">
+
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h3>{{publication.contenu}}</h3>
+      <h3>{{publication.date}}</h3>
+    </div>
+    <div class="panel-body">
+
+      <div *ngFor="let com of publication.commentaires">
+
+        <h2>{{com.contenu}}</h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>

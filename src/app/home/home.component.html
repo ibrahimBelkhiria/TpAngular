@@ -1,0 +1,58 @@
+
+<h2>Welcome to our social network </h2>
+
+
+  <div *ngIf="publications">
+    <div class="col-md-7">
+    <label>Serach by Filter</label>
+    <input type="text" class="form-control"  [(ngModel)]="filterBy"  name="filterBy" >
+
+    <br>
+
+      <form (submit)="addPublication(contenu)" class="well ">
+
+        <div class="form-group">
+          <label>Ajouter Publication:</label>
+          <input type="text" class="form-control" placeholder="ajouter Publication" [(ngModel)]="contenu" name="contenu" >
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" >Publier</button>
+      </form>
+
+
+
+  <div   class="panel panel-primary"  *ngFor="let pub of publications ;let i = index"  >
+    <div class="panel-heading">
+      <div class="panel-title">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT79aVxRokUyllD4bCUCIwEoDlBbEZ7zhWcWybCQD_1hquTjIkN" alt="" width="50" height="50" style="border-radius: 50%">
+        <a href="">{{pub.user.firstname|uppercase}}</a>
+      </div>
+    </div>
+    <div class="panel-body">  <span style="padding-left: 500px" (click)="remove(i)">X</span>
+     <h3>{{pub.contenu}}</h3>
+    </div>
+    <div class="panel-footer">Publiée le : {{pub.date}}
+      <h5>Commentaires :</h5>
+      <ul *ngFor="let com of pub.commentaires">
+        <li><h3>{{com.contenu|myPipe:' '}}</h3></li>
+
+
+      </ul>
+
+    <!--<div *ngFor="let interaction of pub.interactions">
+      <h3 *ngIf="interaction.value"></h3>
+      </div>
+      <span class="glyphicon glyphicon-thumbs-up">  {{getlikes(pub)}}   Like </span><span class="glyphicon glyphicon-thumbs-down">  {{getdislikes(pub)}}  Dislike</span>
+
+    -->
+
+      <a routerLink="publication/{{pub.id}}">View more details !</a>
+    </div>
+
+  </div>
+
+
+  </div>
+  </div>
